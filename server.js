@@ -17,10 +17,10 @@ const port=8080;
 app.use(cors());
 app.use(express.json())
 app.use(morgan('dev'))
-app.use(express.static(path.join(__dirname,'./newssite/build')))
+app.use(express.static(path.join(import.meta.url,'./newssite/build')))
 
 app.use("*",function(req,res){
-    res.sendFile(path.join(__dirname,'./newssite/build'))
+    res.sendFile(path.join(import.meta.url,'./newssite/build'))
 })
 
 app.use("/api/v2/auth",Routes)
